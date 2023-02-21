@@ -58,10 +58,14 @@ jobs:
       - name: Launching the app
         run: docker-compose up --detach
 
-      - name: OWASP ZAP
-        uses: zaproxy/action-baseline@v0.4.0
+      # - name: OWASP ZAP
+      #   uses: zaproxy/action-baseline@v0.4.0
+      #   with:
+      #     target: "https://localhost:4000"
+      #     fail_action: false
+      #     token: $
+      #     issue_title: Security Tests
+      - name: ZAP Scan
+        uses: zaproxy/action-baseline@v0.7.0
         with:
-          target: "https://localhost:4000"
-          fail_action: false
-          token: $
-          issue_title: Security Tests
+          target: 'https://www.zaproxy.org'
